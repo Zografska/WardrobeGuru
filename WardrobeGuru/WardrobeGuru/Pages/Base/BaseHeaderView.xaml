@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="WardrobeGuru.Pages.Base.BaseHeaderView"
+             xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=WardrobeGuru"
+             xmlns:buttons="clr-namespace:WardrobeGuru.Controls.Buttons;assembly=WardrobeGuru"
+             xmlns:system="clr-namespace:System;assembly=netstandard">
+    <Grid HorizontalOptions="FillAndExpand"
+          VerticalOptions="Start"
+          Margin="15,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition Width="5*" />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0"
+                Text="{x:Static fontAwesome:FontAwesomeIcons.ArrowLeft}"
+                FontFamily="{StaticResource FontAwesomeSolid}" 
+                HorizontalOptions="StartAndExpand"
+                VerticalOptions="Center"
+                BackgroundColor="{StaticResource TransparentColor}"
+                TextColor="{StaticResource AccentColor}"
+                IsVisible="{Binding IsBackButtonVisible}"
+                Command="{Binding NavigateBackCommand}"
+                FontSize="16"/>
+
+        <buttons:LogoIndicator Grid.Column="1"
+               HorizontalOptions="CenterAndExpand"
+               IsNetworkConnected="{Binding IsNetworkConnected}"
+               BackgroundColor="{StaticResource TransparentColor}"
+               Padding="-5"
+               Text="{x:Static fontAwesome:FontAwesomeIcons.Wifi}"
+               FontFamily="{StaticResource FontAwesomeSolid}"
+               FontSize="16"/>
+
+        <Button Grid.Column="2"
+               HorizontalOptions="CenterAndExpand"
+               Text="{Binding Title}"
+               BackgroundColor="{StaticResource TransparentColor}"
+               FontAttributes="Bold"
+               TextColor="{AppThemeBinding Light={StaticResource PrimaryColorLight}, Dark={StaticResource PrimaryColorDark}}">
+            <Button.FontSize>
+                <OnPlatform x:TypeArguments="system:Double">
+                    <On Platform="Android" Value="12"/>
+                    <On Platform="iOS" Value="16"/>
+                </OnPlatform>
+            </Button.FontSize>
+        </Button>
+        
+        <Button Grid.Column="4"
+                Text="{x:Static fontAwesome:FontAwesomeIcons.RightFromBracket}"
+                FontFamily="{StaticResource FontAwesomeSolid}" 
+                HorizontalOptions="EndAndExpand"
+                VerticalOptions="Center"
+                BackgroundColor="{StaticResource TransparentColor}"
+                TextColor="{StaticResource AccentColor}"
+                IsVisible="{Binding IsLogoutButtonVisible}"
+                Command="{Binding LogoutCommand}"
+                FontSize="16">
+        </Button>
+    </Grid>
+</ContentView>

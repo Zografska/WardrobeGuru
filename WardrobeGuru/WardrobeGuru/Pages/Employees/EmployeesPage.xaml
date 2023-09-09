@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:base="clr-namespace:WardrobeGuru.Pages.Base;assembly=WardrobeGuru"
+             xmlns:vm="clr-namespace:WardrobeGuru.Pages.Employees;assembly=WardrobeGuru"
+             xmlns:controls="clr-namespace:WardrobeGuru.Controls;assembly=WardrobeGuru"
+             xmlns:behaviors="http://prismlibrary.com"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:utility="clr-namespace:WardrobeGuru.Utility;assembly=WardrobeGuru"
+             xmlns:converters="http://xamarin.com/schemas/2020/toolkit"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance vm:EmployeesPageViewModel}"
+             x:Class="WardrobeGuru.Pages.Employees.EmployeesPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ItemTappedEventArgsConverter x:Key="ItemTappedEventArgsConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <base:BasePage.ContentValue>
+        <StackLayout>
+            <controls:CustomListView 
+                HorizontalOptions="FillAndExpand"
+                SeparatorVisibility="None"
+                HasUnevenRows="True"
+                ItemsSource="{Binding Items}">
+                <controls:CustomListView.Behaviors>
+                    <behaviors:EventToCommandBehavior
+                        EventName="ItemTapped"
+                        Command="{Binding NavigateToEmployeeDetailsCommand}"
+                        EventArgsConverter="{StaticResource ItemTappedEventArgsConverter}"/>
+                </controls:CustomListView.Behaviors>
+                <controls:CustomListView.ItemTemplate>
+                    <DataTemplate>
+                        <vm:EmployeeViewCell Height="100"/>
+                    </DataTemplate>
+                </controls:CustomListView.ItemTemplate>
+            </controls:CustomListView>
+        </StackLayout>
+    </base:BasePage.ContentValue>
+</base:BasePage>

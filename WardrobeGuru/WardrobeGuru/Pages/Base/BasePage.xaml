@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             forms:NavigationPage.HasNavigationBar="False"
+             xmlns:forms="http://xamarin.com/schemas/2014/forms"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:base="clr-namespace:WardrobeGuru.Pages.Base;assembly=WardrobeGuru"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:welcome="clr-namespace:WardrobeGuru.Pages.Welcome;assembly=WardrobeGuru"
+             mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
+             ios:Page.UseSafeArea="true"
+             x:Class="WardrobeGuru.Pages.Base.BasePage"
+             x:Name="self"
+             BackgroundColor="{AppThemeBinding 
+                        Dark={StaticResource BackgroundColorDark}, 
+                        Light={StaticResource BackgroundColorLight}}">
+    <ContentPage.Content>
+        <StackLayout>
+            <base:BaseHeaderView />
+            <ContentView
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand"
+                Content="{Binding ContentValue, Source={x:Reference self}}"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

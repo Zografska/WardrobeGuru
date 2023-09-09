@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage
+    forms:NavigationPage.HasBackButton="False"
+    ios:Page.UseSafeArea="true"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core"
+    xmlns:base="clr-namespace:WardrobeGuru.Pages.Base;assembly=WardrobeGuru"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:forms="http://xamarin.com/schemas/2014/forms"
+    xmlns:welcome="clr-namespace:WardrobeGuru.Pages.Welcome;assembly=WardrobeGuru"
+    xmlns:controls="clr-namespace:WardrobeGuru.Controls;assembly=WardrobeGuru"
+    xmlns:utility="clr-namespace:WardrobeGuru.Utility;assembly=WardrobeGuru"
+    xmlns:behaviors="http://prismlibrary.com"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
+    xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=WardrobeGuru"
+    xmlns:buttons="clr-namespace:WardrobeGuru.Controls.Buttons;assembly=WardrobeGuru"
+    x:Class="WardrobeGuru.WelcomePage">
+    <base:BasePage.ContentValue>
+        <ScrollView>
+            <Grid HorizontalOptions="FillAndExpand"
+                  VerticalOptions="FillAndExpand"
+                  Margin="30, 30">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+
+                <!-- This frame is a placeholder for displaying some profile info -->
+                <Frame
+                    Padding="10"
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.RowSpan="2"
+                    HorizontalOptions="FillAndExpand"
+                    HasShadow="False"
+                    BorderColor="{AppThemeBinding Light={StaticResource GraySeparatorColorLight}, 
+                    Dark={StaticResource GraySeparatorColorDark}}"
+                    BackgroundColor="{StaticResource TransparentColor}"
+                    VerticalOptions="FillAndExpand"
+                    CornerRadius="10">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding NavigateToNotesCommand}" />
+                    </Frame.GestureRecognizers>
+                    <StackLayout
+                        Margin="20"
+                        HorizontalOptions="CenterAndExpand"
+                        VerticalOptions="CenterAndExpand">
+
+                        <Label
+                            Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
+                            TextColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
+                             Dark={StaticResource PrimaryChilledColorDark}}"
+                            FontSize="20"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+
+                        <Button
+                            Text="Restaurant Location"
+                            FontSize="14"
+                            BackgroundColor="{StaticResource TransparentColor}"
+                            TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight},
+                             Dark={StaticResource DimGrayColorDark}}"
+                            CornerRadius="10"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center">
+                            <Button.Behaviors>
+                                <behaviors:EventToCommandBehavior
+                                    EventName="Clicked"
+                                    Command="{Binding MapClickCommand}" />
+                            </Button.Behaviors>
+                        </Button>
+                    </StackLayout>
+                </Frame>
+
+                <BoxView
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="2" 
+                    Style="{StaticResource BoxViewStopper}"/>
+
+                <buttons:VerticalIconButton
+                    Grid.Row="3"
+                    Grid.Column="0"
+                    Style="{StaticResource MenuButton}"
+                    TappedCommand="{Binding NavigateToNotesCommand}"
+                    Title="{x:Static utility:XamlConstants.Notes}"
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}" />
+
+                <buttons:VerticalIconButton
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Style="{StaticResource MenuButton}"
+                    TappedCommand="{Binding NavigateToReservationsCommand}"
+                    Title="{x:Static utility:XamlConstants.Reservations}"
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Calendar}" />
+                
+                <buttons:VerticalIconButton
+                    Grid.Row="4"
+                    Grid.Column="0"
+                    Style="{StaticResource MenuButton}"
+                    Title="{x:Static utility:XamlConstants.Shifts}"
+                    TappedCommand="{Binding NavigateToShiftsCommand}"
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Clock}"/>
+
+                <buttons:VerticalIconButton
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Style="{StaticResource MenuButton}"
+                    Title="{x:Static utility:XamlConstants.Employees}"
+                    TappedCommand="{Binding NavigateToEmployeesCommand}"
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Person}"
+                    IconFontFamily="{StaticResource FontAwesomeSolid}" />
+
+                <BoxView
+                    Grid.Column="0"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="5" 
+                    Style="{StaticResource BoxViewStopper}"/>
+
+                <Button
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"
+                    BorderColor="{AppThemeBinding Light={StaticResource GrayDarkerColorLight}, Dark={StaticResource GrayDarkerColorDark}}"
+                    BackgroundColor="{StaticResource TransparentColor}"
+                    Command="{Binding NavigateToSettingsCommand}"
+                    Text="{x:Static fontAwesome:FontAwesomeIcons.Gear}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    BorderWidth="2"
+                    CornerRadius="10"
+                    FontSize="20"
+                    Padding="10"
+                    Margin="10"
+                    TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight}, Dark={StaticResource DimGrayColorDark}}" />
+
+            </Grid>
+        </ScrollView>
+    </base:BasePage.ContentValue>
+</base:BasePage>

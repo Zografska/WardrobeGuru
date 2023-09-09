@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<base:BasePage xmlns="http://xamarin.com/schemas/2014/forms"
+               xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+               x:Class="WardrobeGuru.Pages.Authentication.Login.LoginPage"
+               xmlns:toolkit="http://xamarin.com/schemas/2020/toolkit"
+               xmlns:base="clr-namespace:WardrobeGuru.Pages.Base;assembly=WardrobeGuru"
+               xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=WardrobeGuru"
+               xmlns:controls="clr-namespace:WardrobeGuru.Controls;assembly=WardrobeGuru">
+    <base:BasePage.ContentValue>
+        <StackLayout
+            VerticalOptions="Center"
+            Margin="20,0">
+
+            <Label Text="Welcome to Restaurant Manager!"
+                   Style="{StaticResource HeaderLabel}" />
+
+            <Label Text="Fill in your login details to proceed"
+                   Style="{StaticResource SubheaderLabel}"
+                   Margin="0, 10,0,20" />
+
+            <Entry
+                Placeholder="E-mail"
+                Text="{Binding Username, Mode=TwoWay}"
+                Margin="20,5"
+                Keyboard="Email">
+                <Entry.Behaviors>
+                    <toolkit:EmailValidationBehavior
+                        DecorationFlags="Trim"
+                        IsValid="{Binding UsernameValid, Mode=OneWayToSource}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <Entry
+                Placeholder="Password"
+                IsPassword="true"
+                Margin="20,5"
+                Text="{Binding Password, Mode=TwoWay}">
+                <Entry.Behaviors>
+                    <toolkit:TextValidationBehavior
+                        IsValid="{Binding PasswordValid, Mode=OneWayToSource}"
+                        InvalidStyle="{StaticResource InvalidEntryStyle}"
+                        MinimumLength="6" />
+                </Entry.Behaviors>
+            </Entry>
+
+            <controls:FrameButton
+                Text="Login"
+                Style="{StaticResource AccentButton}"
+                FrameTappedCommand="{Binding LoginCommand}"
+                Margin="30,15" />
+
+            <controls:FrameButton
+                Text="Don't have an account? Signup!"
+                Style="{StaticResource HypertextButton}"
+                FrameTappedCommand="{Binding NavigateToSignupCommand}"
+                Margin="30,-20" />
+
+            <controls:FrameButton
+                Text="Forgot password?"
+                Style="{StaticResource HypertextButton}"
+                Margin="30,-10"
+                FrameTappedCommand="{Binding NavigateToResetPasswordCommand}" />
+
+            <controls:FrameButton
+                Icon="{x:Static fontAwesome:FontAwesomeIcons.Google}"
+                IconFontFamily="{StaticResource FontAwesomeBrands}"
+                Text="Login With Google"
+                Style="{StaticResource PrimaryButton}"
+                Margin="30,0"
+                FrameTappedCommand="{Binding LoginWithGoogleCommand}" />
+
+            <controls:FrameButton
+                Text="Login As Sadmin"
+                Style="{StaticResource PrimaryButton}"
+                Margin="30,0"
+                FrameTappedCommand="{Binding LoginAsSadminCommand}" />
+
+        </StackLayout>
+    </base:BasePage.ContentValue>
+</base:BasePage>

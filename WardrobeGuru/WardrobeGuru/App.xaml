@@ -1,8 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WardrobeGuru.App">
+<dryIoc:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+                         xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                         xmlns:dryIoc="http://prismlibrary.com"
+                         xmlns:resources="clr-namespace:WardrobeGuru.Resources;assembly=WardrobeGuru"
+                         x:Class="WardrobeGuru.App">
     <Application.Resources>
-
+        <Color x:Key="WindowBackgroundColor">White</Color>
+        <Color x:Key="WindowBackgroundColorDark">Black</Color>
+        
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <resources:Colors/>
+                <resources:Fonts/>
+                <resources:Styles/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
-</Application>
+</dryIoc:PrismApplication>
