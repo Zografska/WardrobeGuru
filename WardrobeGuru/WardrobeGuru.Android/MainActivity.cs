@@ -5,7 +5,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using Java.Security;
-using Plugin.GoogleClient;
+// using Plugin.GoogleClient;
 using Prism;
 using Prism.Ioc;
 using WardrobeGuru.Core.Authentication;
@@ -23,7 +23,7 @@ namespace WardrobeGuru.Droid
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-            GoogleClientManager.Initialize(this);
+            // GoogleClientManager.Initialize(this);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
