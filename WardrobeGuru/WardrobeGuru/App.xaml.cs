@@ -7,6 +7,7 @@ using WardrobeGuru.Pages.Authentication.Login;
 using WardrobeGuru.Pages.Authentication.ResetPassword;
 using WardrobeGuru.Pages.Authentication.Signup;
 using WardrobeGuru.Pages.Employees;
+using WardrobeGuru.Pages.Search;
 using WardrobeGuru.Pages.Settings;
 using WardrobeGuru.Pages.Welcome;
 using WardrobeGuru.Services;
@@ -33,10 +34,13 @@ namespace WardrobeGuru
             containerRegistry.RegisterForNavigation<SignupPage, SignupPageViewModel>();
             containerRegistry.RegisterForNavigation<ResetPasswordPage, ResetPasswordPageViewModel>();
             containerRegistry.RegisterForNavigation<WelcomePage, WelcomePageViewModel>();
+            containerRegistry.RegisterForNavigation<SearchPage, SearchPageViewModel>();
+
 
             containerRegistry.RegisterForNavigation<SettingsPage, SettingsPageViewModel>();
             containerRegistry.RegisterForNavigation<EmployeesPage, EmployeesPageViewModel>();
             containerRegistry.RegisterForNavigation<EmployeeDetail, EmployeeDetailViewModel>();
+            
 
             containerRegistry.Register<DatabaseServiceRemote>();
         }

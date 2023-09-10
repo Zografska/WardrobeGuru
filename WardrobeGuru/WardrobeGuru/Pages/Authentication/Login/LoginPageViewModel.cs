@@ -1,5 +1,6 @@
 using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
 // using System.Windows.Input;
 // using Plugin.GoogleClient;
 // using Plugin.GoogleClient.Shared;
@@ -9,6 +10,7 @@ using WardrobeGuru.Extensions;
 using WardrobeGuru.Pages.Authentication.ResetPassword;
 using WardrobeGuru.Pages.Authentication.Signup;
 using WardrobeGuru.Pages.Base;
+using WardrobeGuru.Pages.Search;
 using WardrobeGuru.Services;
 using WardrobeGuru.Services.Network;
 using WardrobeGuru.Utility;
@@ -30,7 +32,7 @@ namespace WardrobeGuru.Pages.Authentication.Login
         private bool _passwordValid { get; set; }
 
         public bool IsLoginPossible => _usernameValid && _passwordValid;
-        // public ICommand LoginCommand { get; set; }
+         public ICommand LoginCommand { get; set; }
         // public ICommand LoginAsSadminCommand { get; set; }
         // public ICommand NavigateToSignupCommand { get; set; }
         // public ICommand NavigateToResetPasswordCommand { get; set; }
@@ -74,8 +76,8 @@ namespace WardrobeGuru.Pages.Authentication.Login
         public LoginPageViewModel(INavigationService navigationService, IPopupService popupService,
             IAuthService authService, INetworkService networkService, IProfileService profileService)
             : base(navigationService, popupService, authService, networkService)
-        {
-            // LoginCommand = new SingleClickCommand(Login, () => IsLoginPossible);
+        { 
+            LoginCommand = new SingleClickCommand(Login2);
             // NavigateToSignupCommand = new SingleClickCommand(NavigateToSignup);
             // NavigateToResetPasswordCommand = new SingleClickCommand(NavigateToResetPassword);
             // LoginAsSadminCommand = new SingleClickCommand(LoginAsSadmin);
@@ -163,6 +165,12 @@ namespace WardrobeGuru.Pages.Authentication.Login
             await NavigationService.NavigateTo<SignupPage>();
         }
 
+        private async void Login2()
+        {
+            await NavigationService.NavigateTo<SearchPage>();
+
+        }
+        
         private async void Login()
         {
             if (NetworkService.IsNetworkConnected())
@@ -171,6 +179,8 @@ namespace WardrobeGuru.Pages.Authentication.Login
                 if (!token.IsNullOrEmpty())
                 {
                     await NavigationService.NavigateTo<WelcomePage>();
+                    await NavigationService.NavigateTo<SearchPage>();
+
                     ClearCredentials();
                 }
                 else
