@@ -11,7 +11,8 @@
                 TextChanged="OnTextChanged" />
             <ListView x:Name="ClothingItemsView"
                       HasUnevenRows="true"
-                      ItemsSource="{Binding ClothingItems}">
+                      ItemsSource="{Binding ClothingItems}"
+                      SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

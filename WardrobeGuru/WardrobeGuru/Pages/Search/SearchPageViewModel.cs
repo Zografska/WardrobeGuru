@@ -19,19 +19,22 @@ namespace WardrobeGuru.Pages.Search
             {
                 Name = "name1",
                 Description = "test1",
-                Image = "image1"
+                Image = "image1",
+                Status = "Available"
             },
             new ClothingItem
             {
                 Name = "name2",
                 Description = "test2",
-                Image = "image2"
+                Image = "image2",
+                Status = "Available"
             },
             new ClothingItem
             {
                 Name = "name3",
                 Description = "test3",
-                Image = "image3"
+                Image = "image3",
+                Status = "Available"
             }
         };
 
@@ -48,10 +51,10 @@ namespace WardrobeGuru.Pages.Search
 
         private async Task NavigateToItem(object obj)
         {
-            var card = obj as ClothingItem;
+            var clothingItem = obj as ClothingItem;
 
             var parameter = new NavigationParameters();
-            parameter.Add("card", card);
+            parameter.Add("clothingItem", clothingItem);
             await _navigation.NavigateAsync(new Uri("ItemDetailsPage", UriKind.Relative), parameter);
         }
         
