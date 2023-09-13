@@ -1,36 +1,39 @@
 using System;
+using System.Collections.ObjectModel;
+using System.IO;
 using Prism.Mvvm;
 using Prism.Navigation;
 using WardrobeGuru.Model;
+using WardrobeGuru.Services.Network;
+using WardrobeGuru.Utility;
+using Xamarin.Forms;
+using XCT.Popups.Prism;
 
 namespace WardrobeGuru.Pages.ItemDetails
 {
-    public class ItemDetailsPageViewModel : BindableBase, IDisposable, IInitialize
+    public class ItemDetailsPageViewModel : ViewModelBase
     {
         private ClothingItem _clothingItem;
+
         public ClothingItem ClothingItem
         {
             get => _clothingItem;
             set { SetProperty(ref _clothingItem, value); }
         }
-        public void Initialize(INavigationParameters parameters)
+
+        public ItemDetailsPageViewModel(INavigationService navigationService, IPopupService popupService,
+            INetworkService networkService)
+            : base(navigationService, popupService, networkService)
         {
-            var clothingItem = parameters["clothingItem"];
-            InitializeClothingItem((ClothingItem)clothingItem);
-        }
-        
-        private void InitializeClothingItem(ClothingItem clothingItem)
-        {
-            ClothingItem.Name = clothingItem.Name;
-            ClothingItem.Status = clothingItem.Status;
-            ClothingItem.Description = clothingItem.Description;
-            ClothingItem.Image = clothingItem.Image;
-            
         }
 
-        public void Dispose()
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            throw new NotImplementedException();
+            base.OnNavigatedTo(parameters);
+
+            ClothingItem clothingItem;
+            parameters.TryGetValue(Constants.NavigationConstants.ClothingItem, out clothingItem);
+            ClothingItem = clothingItem;
         }
     }
 }

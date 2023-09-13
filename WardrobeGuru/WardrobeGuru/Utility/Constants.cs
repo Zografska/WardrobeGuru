@@ -11,6 +11,7 @@ namespace WardrobeGuru.Utility
             public static string Service = "Service";
             public static string Date = "Date";
             public const string Employee = "Employee";
+            public const string ClothingItem = "ClothingItem";
         }
 
         public class AlertConstants

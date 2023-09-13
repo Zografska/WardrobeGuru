@@ -3,7 +3,10 @@ using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Prism.Navigation;
+using WardrobeGuru.Extensions;
 using WardrobeGuru.Model;
+using WardrobeGuru.Pages.ItemDetails;
+using WardrobeGuru.Utility;
 using Xamarin.Forms;
 
 namespace WardrobeGuru.Pages.Search
@@ -11,7 +14,12 @@ namespace WardrobeGuru.Pages.Search
     public class SearchPageViewModel
     {
         private readonly INavigationService _navigation;
-        public ICommand SelectItemCommand { get; set; }
+        public ICommand SelectItemCommand { get; }
+
+        public  const string ImagePath =
+            "https://thumbs.dreamstime.com/b/tshirt-icon-vector-black-white-background-47049468.jpg";
+
+        public const string FilePath = "";
 
         public ObservableCollection<ClothingItem> ClothingItems { get; set; } = new ObservableCollection<ClothingItem>
         {
@@ -19,21 +27,21 @@ namespace WardrobeGuru.Pages.Search
             {
                 Name = "name1",
                 Description = "test1",
-                Image = "image1",
+                Image = new ImageModel(ImagePath, FilePath),
                 Status = "Available"
             },
             new ClothingItem
             {
                 Name = "name2",
                 Description = "test2",
-                Image = "image2",
+                Image = new ImageModel(ImagePath, FilePath),
                 Status = "Available"
             },
             new ClothingItem
             {
                 Name = "name3",
                 Description = "test3",
-                Image = "image3",
+                Image = new ImageModel(ImagePath, FilePath),
                 Status = "Available"
             }
         };
@@ -41,21 +49,23 @@ namespace WardrobeGuru.Pages.Search
         public SearchPageViewModel(INavigationService navigation)
         {
             _navigation = navigation;
-            SelectItemCommand = new Command(async (x) => await NavigateToItem(x));
+            SelectItemCommand = new Command<ClothingItem>(NavigateToClothingItemDetails);
         }
 
         public SearchPageViewModel()
         {
             
         }
-
-        private async Task NavigateToItem(object obj)
+        
+        private async void NavigateToClothingItemDetails(ClothingItem clothingItem)
         {
-            var clothingItem = obj as ClothingItem;
-
-            var parameter = new NavigationParameters();
-            parameter.Add("clothingItem", clothingItem);
-            await _navigation.NavigateAsync(new Uri("ItemDetailsPage", UriKind.Relative), parameter);
+            await _navigation.NavigateTo<ItemDetailsPage>(new NavigationParameters
+            {
+                {
+                    Constants.NavigationConstants.ClothingItem, clothingItem
+                }
+            });
+            SingleClickCommand.ResetLastClick();
         }
         
     }

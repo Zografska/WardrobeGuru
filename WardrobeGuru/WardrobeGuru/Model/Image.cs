@@ -1,12 +1,12 @@
 namespace WardrobeGuru.Model
 {
-    public class Image
+    public class ImageModel
     {
         public string ImagePath { get; set; }
 
         public string FileName { get; set; }
 
-        public Image(string imagePathV, string fileName)
+        public ImageModel(string imagePathV, string fileName)
         {
             ImagePath = imagePathV;
             FileName = fileName;

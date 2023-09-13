@@ -19,13 +19,11 @@
                             <Frame 
                                 Margin="15,5,15,5">
                                 <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding Image.ImagePath}"
+                                           WidthRequest="100"
+                                           HeightRequest="100"/>
+                                    <StackLayout Orientation="Vertical" Margin="50">
                                     <Label
-                                        Text="{Binding Image}"
-                                        FontFamily="BoldFont"
-                                        TextColor="Black"
-                                        FontSize="Large" />
-                                    <StackLayout Orientation="Vertical">
-                                        <Label
                                             Text="{Binding Name}"
                                             TextColor="Black"
                                             FontFamily="SemiboldFont"
