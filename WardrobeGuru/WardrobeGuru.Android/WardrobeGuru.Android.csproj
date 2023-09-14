@@ -57,7 +57,6 @@
     <Compile Include="Core\AuthDroid.cs" />
     <Compile Include="Core\PushNotificationsLocal.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\FontAwesome5Brands.otf" />

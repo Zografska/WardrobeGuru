@@ -4,14 +4,11 @@ using Android.Content;
 using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
-using Java.Security;
-// using Plugin.GoogleClient;
 using Prism;
 using Prism.Ioc;
 using WardrobeGuru.Core.Authentication;
 using WardrobeGuru.Droid.Core;
 using WardrobeGuru.Services;
-using Xamarin.Forms;
 
 namespace WardrobeGuru.Droid
 {

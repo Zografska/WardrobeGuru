@@ -70,23 +70,18 @@
                             VerticalOptions="Center"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center" />
-
-                        <Button
-                            Text="Restaurant Location"
-                            FontSize="14"
-                            BackgroundColor="{StaticResource TransparentColor}"
-                            TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight},
-                             Dark={StaticResource DimGrayColorDark}}"
-                            CornerRadius="10"
+                        <Label
+                            Text="{Binding Temperature}"
+                            TextColor="{AppThemeBinding Light={StaticResource SecondaryColorDark},
+                             Dark={StaticResource PrimaryChilledColorDark}}"
+                            FontSize="30"
                             FontAttributes="Bold"
                             HorizontalOptions="Center"
-                            VerticalOptions="Center">
-                            <Button.Behaviors>
-                                <behaviors:EventToCommandBehavior
-                                    EventName="Clicked"
-                                    Command="{Binding MapClickCommand}" />
-                            </Button.Behaviors>
-                        </Button>
+                            VerticalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            VerticalTextAlignment="Center" />
+
+                        
                     </StackLayout>
                 </Frame>
 

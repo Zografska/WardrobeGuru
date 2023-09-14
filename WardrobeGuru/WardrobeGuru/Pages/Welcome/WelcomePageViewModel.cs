@@ -1,5 +1,8 @@
 using System;
+using System.Globalization;
+using System.Net.Http;
 using System.Windows.Input;
+using Newtonsoft.Json;
 using Prism.Navigation;
 using WardrobeGuru.Core.Authentication;
 using WardrobeGuru.Extensions;
@@ -30,6 +33,18 @@ namespace WardrobeGuru.Pages.Welcome
             }
         }
         
+        private string _temperature;
+
+        public string Temperature
+        {
+            get => _temperature;
+            set
+            {
+                _temperature = value;
+                RaisePropertyChanged(nameof(Temperature));
+            }
+        }
+        
         public ICommand NavigateToEmployeesCommand { get; }
         public ICommand NavigateToSettingsCommand { get; }
         public ICommand LogoutCommand { get; }
@@ -50,7 +65,24 @@ namespace WardrobeGuru.Pages.Welcome
         public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
-            Username = (await _profileService.GetCurrentUser()).FullName;
+            // Username = (await _profileService.GetCurrentUser()).FullName;
+            var location = await Geolocation.GetLocationAsync();
+            var url = "https://api.open-meteo.com/v1/forecast?latitude=" + location.Latitude.ToString("0.0", CultureInfo.InvariantCulture) + "&longitude=" +
+                      location.Longitude.ToString("0.0", CultureInfo.InvariantCulture) + "&current_weather=true";
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, url);
+            var httpClient = new HttpClient();
+            try
+            {
+                var message = await httpClient.SendAsync(httpRequest);
+                var result = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var o = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(result);
+                var temp = o.Last.First;
+                Temperature = temp.Value<int>("temperature") + "°C";
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+            
         }
 
         private void Logout()

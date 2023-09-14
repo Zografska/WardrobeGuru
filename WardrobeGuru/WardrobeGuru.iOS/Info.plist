@@ -34,5 +34,9 @@
     <string>WardrobeGuru</string>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/AppIcon.appiconset</string>
+    <key>NSLocationUsageDescription</key>
+    <string></string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string></string>
 </dict>
 </plist>
