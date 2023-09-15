@@ -77,7 +77,8 @@ namespace WardrobeGuru.Pages.Welcome
                 var result = await message.Content.ReadAsStringAsync().ConfigureAwait(false);
                 var o = (Newtonsoft.Json.Linq.JObject)JsonConvert.DeserializeObject(result);
                 var temp = o.Last.First;
-                Temperature = temp.Value<int>("temperature") + "°C";
+                var temperature = temp.Value<int>("temperature");
+                Temperature = (temperature > 20 ? "☀️" : "❄️") + temperature + "°C";
             }catch(Exception e)
             {
                 Console.WriteLine(e);
