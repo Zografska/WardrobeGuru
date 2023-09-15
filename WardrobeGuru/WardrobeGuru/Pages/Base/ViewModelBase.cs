@@ -3,6 +3,8 @@ using System.Windows.Input;
 using Prism.AppModel;
 using Prism.Mvvm;
 using Prism.Navigation;
+using WardrobeGuru.Extensions;
+using WardrobeGuru.Pages.Search;
 using WardrobeGuru.Services.Network;
 using WardrobeGuru.Utility;
 using Xamarin.Forms;
@@ -61,6 +63,7 @@ namespace WardrobeGuru
         }
 
         public ICommand NavigateBackCommand { get; }
+        public ICommand NavigateToListPageCommand { get; }
         public ViewModelBase(INavigationService navigationService, IPopupService popupService, INetworkService networkService)
         {
             NavigationService = navigationService;
@@ -73,6 +76,7 @@ namespace WardrobeGuru
             {
                 IsNetworkConnected = message.IsConnected;
             });
+            NavigateToListPageCommand = new Command(() => NavigationService.NavigateTo<SearchPage>());
         }
 
         private void NavigateBack()

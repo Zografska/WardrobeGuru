@@ -9,6 +9,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:welcome="clr-namespace:WardrobeGuru.Pages.Welcome;assembly=WardrobeGuru"
+             xmlns:controls="clr-namespace:WardrobeGuru.Controls;assembly=WardrobeGuru"
+             xmlns:fontAwesome="clr-namespace:FontAwesome;assembly=WardrobeGuru"
              mc:Ignorable="d"
              d:DataContext="{d:DesignInstance welcome:WelcomePageViewModel}"
              ios:Page.UseSafeArea="true"
@@ -24,6 +26,18 @@
                 HorizontalOptions="FillAndExpand"
                 VerticalOptions="FillAndExpand"
                 Content="{Binding ContentValue, Source={x:Reference self}}"/>
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                <controls:FrameButton
+                    Style="{StaticResource MenuButton}"
+                    FrameTappedCommand="{Binding NavigateToListPageCommand}"
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Filter}"
+                    IconFontFamily="{StaticResource FontAwesomeSolid}"/>
+                <controls:FrameButton
+                    Style="{StaticResource MenuButton}"
+                    FrameTappedCommand="{Binding NavigateToListPageCommand}"
+                    Icon="{x:Static fontAwesome:FontAwesomeIcons.User}"
+                    IconFontFamily="{StaticResource FontAwesomeSolid}"/>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

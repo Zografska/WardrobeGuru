@@ -27,7 +27,7 @@
     <Color x:Key="SecondaryColorLight">#ffffff</Color>
     <Color x:Key="ViewCellTextColorLight">#000000</Color>
 
-    <Color x:Key="BackgroundColorLight">#ffffff</Color>
+    <Color x:Key="BackgroundColorLight">#E6E6FA</Color>
     <Color x:Key="ButtonFontColorLight">#43464B</Color>
     
     <!-- dark colors -->

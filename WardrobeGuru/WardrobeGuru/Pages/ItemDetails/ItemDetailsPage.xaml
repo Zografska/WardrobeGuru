@@ -5,7 +5,8 @@
              x:Class="WardrobeGuru.Pages.ItemDetails.ItemDetailsPage">
     <ContentPage.Content>
         <StackLayout Spacing="20">
-            <Image Source="{Binding ClothingItem.Image.ImagePath}" />
+            <Image Source="{Binding ImageUrl}" />
+            <Button Text="Add Picture" Command="{Binding AddPictureCommand}"></Button>
             <Label Text="{Binding ClothingItem.Name}"
                    HorizontalOptions="Center"
                    FontAttributes="Bold"
