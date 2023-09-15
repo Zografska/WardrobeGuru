@@ -171,7 +171,7 @@ namespace WardrobeGuru.Pages.Welcome
         public override async void Initialize(INavigationParameters parameters)
         {
             base.Initialize(parameters);
-            // Username = (await _profileService.GetCurrentUser()).FullName;
+            Username = (await _profileService.GetCurrentUser()).FullName;
             var location = await Geolocation.GetLocationAsync();
             var url = "https://api.open-meteo.com/v1/forecast?latitude=" + location.Latitude.ToString("0.0", CultureInfo.InvariantCulture) + "&longitude=" +
                       location.Longitude.ToString("0.0", CultureInfo.InvariantCulture) + "&current_weather=true";

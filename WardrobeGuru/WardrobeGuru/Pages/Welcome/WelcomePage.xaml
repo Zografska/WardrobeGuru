@@ -60,7 +60,7 @@
                         VerticalOptions="CenterAndExpand">
 
                         <Label
-                            Text="{Binding Username, StringFormat='Welcome to WardrobeGuru!'}"
+                            Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
                             TextColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
                              Dark={StaticResource PrimaryChilledColorDark}}"
                             FontSize="20"
