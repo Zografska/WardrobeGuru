@@ -20,7 +20,6 @@
     xmlns:buttons="clr-namespace:WardrobeGuru.Controls.Buttons;assembly=WardrobeGuru"
     x:Class="WardrobeGuru.WelcomePage">
     <base:BasePage.ContentValue>
-        <ScrollView>
             <Grid HorizontalOptions="FillAndExpand"
                   VerticalOptions="FillAndExpand"
                   Margin="30, 30">
@@ -61,7 +60,7 @@
                         VerticalOptions="CenterAndExpand">
 
                         <Label
-                            Text="{Binding Username, StringFormat='Welcome {0:F2}!'}"
+                            Text="{Binding Username, StringFormat='Welcome to WardrobeGuru!'}"
                             TextColor="{AppThemeBinding Light={StaticResource PrimaryChilledColorLight},
                              Dark={StaticResource PrimaryChilledColorDark}}"
                             FontSize="20"
@@ -80,7 +79,6 @@
                             VerticalOptions="Center"
                             HorizontalTextAlignment="Center"
                             VerticalTextAlignment="Center" />
-
                         
                     </StackLayout>
                 </Frame>
@@ -91,39 +89,49 @@
                     Grid.Row="2" 
                     Style="{StaticResource BoxViewStopper}"/>
 
-                <buttons:VerticalIconButton
-                    Grid.Row="3"
-                    Grid.Column="0"
-                    Style="{StaticResource MenuButton}"
-                    TappedCommand="{Binding NavigateToNotesCommand}"
-                    Title="{x:Static utility:XamlConstants.Notes}"
-                    Icon="{x:Static fontAwesome:FontAwesomeIcons.PenToSquare}" />
-
-                <buttons:VerticalIconButton
-                    Grid.Row="3"
-                    Grid.Column="1"
-                    Style="{StaticResource MenuButton}"
-                    TappedCommand="{Binding NavigateToReservationsCommand}"
-                    Title="{x:Static utility:XamlConstants.Reservations}"
-                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Calendar}" />
+                <ScrollView Grid.Row="3"
+                            Grid.ColumnSpan="2"
+                            Grid.Column="0" Orientation="Horizontal">
+                    <StackLayout BindableLayout.ItemsSource="{Binding ClothingItems1}" 
+                                 Orientation="Horizontal"
+                    >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <buttons:VerticalIconButton
+                                        Style="{StaticResource MenuButton}"
+                                        Title="{Binding Name}"
+                                        TappedCommand="{Binding NavigateToItemCommand}"
+                                        Icon="{x:Static fontAwesome:FontAwesomeIcons.Shirtsinbulk}"
+                                        IconFontFamily="{StaticResource FontAwesomeBrands}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
+                <ScrollView Grid.Row="4"
+                            Grid.ColumnSpan="2"
+                            Grid.Column="0" Orientation="Horizontal">
+                    <StackLayout BindableLayout.ItemsSource="{Binding ClothingItems2}" 
+                                 Orientation="Horizontal"
+                    >
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout>
+                                    <buttons:VerticalIconButton
+                                        Style="{StaticResource MenuButton}"
+                                        Title="{Binding Name}"
+                                        TappedCommand="{Binding NavigateToItemCommand}"
+                                        Icon="{x:Static fontAwesome:FontAwesomeIcons.Shirtsinbulk}"
+                                        IconFontFamily="{StaticResource FontAwesomeBrands}"/>
+                                </StackLayout>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+                </ScrollView>
                 
-                <buttons:VerticalIconButton
-                    Grid.Row="4"
-                    Grid.Column="0"
-                    Style="{StaticResource MenuButton}"
-                    Title="{x:Static utility:XamlConstants.Shifts}"
-                    TappedCommand="{Binding NavigateToShiftsCommand}"
-                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Clock}"/>
-
-                <buttons:VerticalIconButton
-                    Grid.Row="4"
-                    Grid.Column="1"
-                    Style="{StaticResource MenuButton}"
-                    Title="{x:Static utility:XamlConstants.Employees}"
-                    TappedCommand="{Binding NavigateToEmployeesCommand}"
-                    Icon="{x:Static fontAwesome:FontAwesomeIcons.Person}"
-                    IconFontFamily="{StaticResource FontAwesomeSolid}" />
-
+                
+   
                 <BoxView
                     Grid.Column="0"
                     Grid.ColumnSpan="2"
@@ -148,6 +156,5 @@
                     TextColor="{AppThemeBinding Light={StaticResource DimGrayColorLight}, Dark={StaticResource DimGrayColorDark}}" />
 
             </Grid>
-        </ScrollView>
     </base:BasePage.ContentValue>
 </base:BasePage>

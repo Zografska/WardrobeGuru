@@ -21,8 +21,8 @@
     <Color x:Key="GrayDarkerColorLight">#acb3bd</Color>
     <Color x:Key="DimGrayColorLight">#ff696969</Color>
 
-    <Color x:Key="PrimaryColorLight">#1e60e3</Color>
-    <Color x:Key="PrimaryChilledColorLight">#7da5f5</Color>
+    <Color x:Key="PrimaryColorLight">#702963</Color>
+    <Color x:Key="PrimaryChilledColorLight">#CF9FFF</Color>
     <Color x:Key="PrimaryChilledColor2ColorLight">#f4f7fe</Color>
     <Color x:Key="SecondaryColorLight">#ffffff</Color>
     <Color x:Key="ViewCellTextColorLight">#000000</Color>
@@ -42,7 +42,7 @@
     <Color x:Key="PrimaryColorDark">#ffffff</Color>
     <Color x:Key="PrimaryChilledColorDark">#7da5f5</Color>
     <Color x:Key="PrimaryChilledColor2">#f4f7fe</Color>
-    <Color x:Key="SecondaryColorDark">#1e60e3</Color>
+    <Color x:Key="SecondaryColorDark">#702963</Color>
     <Color x:Key="ViewCellTextColorDark">#000000</Color>
     
     <Color x:Key="BackgroundColorDark">#43464B</Color>
