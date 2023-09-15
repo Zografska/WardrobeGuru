@@ -26,13 +26,16 @@
                                     <Label
                                             Text="{Binding Name}"
                                             TextColor="Black"
+                                            FontAttributes="Bold"
                                             FontFamily="SemiboldFont"
                                             FontSize="Medium" />
                                         <Label
                                             Text="{Binding Description}"
                                             TextColor="Black"
                                             FontFamily="SemiboldFont"
-                                            FontSize="Medium" />
+                                            FontSize="Medium"
+                                            HorizontalOptions="CenterAndExpand"
+                                            />
                                     </StackLayout>
                                 </StackLayout>
                                 <Frame.GestureRecognizers>

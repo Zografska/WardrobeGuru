@@ -4,7 +4,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="WardrobeGuru.Pages.ItemDetails.ItemDetailsPage">
     <ContentPage.Content>
-        <StackLayout>
+        <StackLayout Spacing="20">
             <Image Source="{Binding ClothingItem.Image.ImagePath}" />
             <Label Text="{Binding ClothingItem.Name}"
                    HorizontalOptions="Center"
@@ -13,10 +13,13 @@
                    CharacterSpacing="1" />
             <Label Text="{Binding ClothingItem.Status}"
                    HorizontalOptions="Center"
+                   TextColor="ForestGreen"
                    FontSize="20" />
+           
             <Label Text="{Binding ClothingItem.Description}"
-                   HorizontalOptions="Center"
-                   FontSize="20" />
+                   FontSize="20"
+                   Margin="15,5,15,5"
+                   HorizontalTextAlignment="Center"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
