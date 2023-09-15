@@ -117,7 +117,7 @@ namespace WardrobeGuru.Pages.Authentication.Login
         private async void Login2()
         {
             _profileService.CurrentUser = Username;
-            await NavigationService.NavigateTo<SearchPage>();
+            await NavigationService.NavigateTo<WelcomePage>();
         }
         
         private async void Login()
