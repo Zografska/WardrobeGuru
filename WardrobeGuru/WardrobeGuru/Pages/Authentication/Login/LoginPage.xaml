@@ -63,20 +63,6 @@
                 Margin="30,-10"
                 FrameTappedCommand="{Binding NavigateToResetPasswordCommand}" />
 
-            <controls:FrameButton
-                Icon="{x:Static fontAwesome:FontAwesomeIcons.Google}"
-                IconFontFamily="{StaticResource FontAwesomeBrands}"
-                Text="Login With Google"
-                Style="{StaticResource PrimaryButton}"
-                Margin="30,0"
-                FrameTappedCommand="{Binding LoginWithGoogleCommand}" />
-
-            <controls:FrameButton
-                Text="Login As Sadmin"
-                Style="{StaticResource PrimaryButton}"
-                Margin="30,0"
-                FrameTappedCommand="{Binding LoginAsSadminCommand}" />
-
         </StackLayout>
     </base:BasePage.ContentValue>
 </base:BasePage>

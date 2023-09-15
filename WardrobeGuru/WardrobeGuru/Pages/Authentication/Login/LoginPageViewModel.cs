@@ -33,9 +33,7 @@ namespace WardrobeGuru.Pages.Authentication.Login
 
         public bool IsLoginPossible => _usernameValid && _passwordValid;
          public ICommand LoginCommand { get; set; }
-        // public ICommand LoginAsSadminCommand { get; set; }
-        // public ICommand NavigateToSignupCommand { get; set; }
-        // public ICommand NavigateToResetPasswordCommand { get; set; }
+
         public bool PasswordValid
         {
             set
@@ -78,61 +76,12 @@ namespace WardrobeGuru.Pages.Authentication.Login
             : base(navigationService, popupService, authService, networkService)
         { 
             LoginCommand = new SingleClickCommand(Login2);
-            // NavigateToSignupCommand = new SingleClickCommand(NavigateToSignup);
-            // NavigateToResetPasswordCommand = new SingleClickCommand(NavigateToResetPassword);
-            // LoginAsSadminCommand = new SingleClickCommand(LoginAsSadmin);
-            // LoginWithGoogleCommand = new AsyncCommand(LoginWithGoogle);
-            // _googleClientManager = CrossGoogleClient.Current;
             _profileService = profileService;
 
             IsBackButtonVisible = false;
             IsLogoutButtonVisible = false;
         }
-
-        // private async Task LoginWithGoogle()
-        // {
-        //     try
-        //     {
-        //         if (NetworkService.IsNetworkConnected())
-        //         {
-        //             GoogleResponse<GoogleUser> googleResponse = await _googleClientManager.LoginAsync();
-        //             if (googleResponse.Status == GoogleActionStatus.Completed)
-        //             {
-        //                 GoogleUser googleUser = googleResponse.Data;
-        //                 var userExists = await _profileService.IsUserExistent(googleUser.Email);
-        //                 Username = googleUser.Email;
-        //                 Password = _profileService.GetGoogleUserPassword(googleUser.Email);
-        //                 if (userExists)
-        //                 {
-        //                     Login();
-        //                 }
-        //                 else
-        //                 {
-        //                     var result = await AuthService.SignUpWithEmailPassword(Username,
-        //                         Password);
-        //
-        //                     if (!result.IsNullOrEmpty())
-        //                     {
-        //                         await _profileService.CreateUser(result, googleUser.GivenName, googleUser.FamilyName,
-        //                             Username, "");
-        //                     }
-        //                     else
-        //                     {
-        //                         DisplayAlert("Failed to create user, please try again");
-        //                     }
-        //
-        //                     Login();
-        //                 }
-        //                 // we use the sign in just for providing user login information, we logout since it's no longer needed
-        //                 _googleClientManager.Logout();
-        //             }
-        //         }
-        //     }
-        //     catch (Exception e)
-        //     {
-        //         DisplayAlert(e.Message);
-        //     }
-        // }
+        
 
         private async void LoginAsSadmin()
         {
